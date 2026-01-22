@@ -1,0 +1,121 @@
+import random
+import time
+
+# Slow text effect (optional)
+def slow_print(text):
+    for char in text:
+        print(char, end="", flush=True)
+        time.sleep(0.02)
+    print()
+
+# Start of the game
+def start_game():
+    slow_print("Welcome to the Dungeon Escape Adventure!")
+    slow_print("You wake up in a dark dungeon with 3 doors.\n")
+    choose_door()
+
+# Door selection
+def choose_door():
+    while True:
+        slow_print("Choose a door to enter:")
+        slow_print("1. Door 1 - Strange noises")
+        slow_print("2. Door 2 - Smells like treasure")
+        slow_print("3. Door 3 - Cold air\n") 
+
+        choice = input("Enter 1, 2, or 3:")
+
+        if choice == "1":
+            room_monster()
+            break
+        elif choice == "2":
+            room_treasure()
+            break
+        elif choice == "3":
+            room_escape()
+            break
+        else:
+            slow_print("Invalid input. Try again.\n")
+
+# Room 1: Monster Room
+def room_monster():
+    slow_print("\n You enter a room and a giant monster appears!")
+    slow_print("You have two choices:")
+    slow_print("1. Run away")
+    slow_print("2. Fight\n")
+
+    choice = input("What will you do? (1/2): ")
+
+    if choice == "1":
+        slow_print("You run as fast as you can!")
+        slow_print("The monster chases you...\n")
+        time.sleep(1)
+        
+        if random.randint(1, 2) == 1:
+            slow_print("The monster caught you! Game Over.")
+        else:
+            slow_print("You escaped back to the main room!\n")
+            choose_door()
+    elif choice == "2":
+        slow_print("You decide to fight!")
+        time.sleep(1)
+
+        if random.randint(1, 3) == 1:
+            slow_print("The monster defeated you. Game Over.")
+        else:
+            slow_print("You defeated the monster! You find an exit behind him.")
+            slow_print("You escaped the dungeon! YOU WIN!")
+    else:
+        slow_print("Invalid choice. The monster eats you. Game Over.")
+        
+# Room 2: Treasure Room
+def room_treasure():
+    slow_print("\n You enter a bright room filled with treasure!")
+    slow_print("There is a golden chest in front of you.")
+    slow_print("You have two choices:")
+    slow_print("1. Open the chest")
+    slow_print("2. Ignore it and go back\n")
+    
+    choice = input("Your choice (1\2): ")
+
+    if choice == "1":
+        if random.randint(1, 2) == 1:
+            slow_print("The chest is filled with gold! YOU WIN1")
+        else:
+            slow_print("It's a trap! Poisonous gas fills the room. Game Over.")
+    elif choice == "2":
+        slow_print("You return to the main room.\n")
+        choose_door()
+    else:
+        slow_print("Invalid choice. The chest explodes. Game Over.")
+
+# Room 3: Escape tunnel
+def room_escape():
+    slow_print("\n You walk into a cold room with a long tunnel.")
+    slow_print("At the end, you see daylight!")
+    slow_print("You have two choices:")
+    slow_print("1. Run through the tunnel")
+    slow_print("2. Stay and look around\n")
+
+    choice = input("Your choice (1\2): ")
+
+    if choice == "1":
+        slow_print("You sprint down the tunnel...")
+        time.sleep(1)
+
+        if random.randint(1, 4) == 1:
+            slow_print("A trap activates and blocks your path. Game Over.")
+        else:
+            slow_print("You reach the outside world!")
+            slow_print("YOU ESCAPED THE DUNGEON! YOU WIN!")
+    elif choice == "2":
+            slow_print("You discover a hidden treasure behind a wall!")
+            slow_print("YOU WIN!")
+    else:
+        slow_print("Invalid choice. The tunnel collapses. Game over.")
+
+# Run the game
+start_game()
+
+
+
+
